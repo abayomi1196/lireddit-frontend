@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { Box, Button } from "@chakra-ui/react";
 import { useMutation } from "urql";
+import { useRouter } from "next/router";
 
 import { Wrapper } from "components/Wrapper";
 import { InputField } from "components/InputField";
@@ -12,6 +13,7 @@ import { registerPatient } from "graphql/mutations/register";
 interface RegisterProps {}
 
 const Register: React.FC<RegisterProps> = ({}) => {
+  const router = useRouter();
   const [, handleRegister] = useMutation(registerPatient);
 
   return (
@@ -23,6 +25,9 @@ const Register: React.FC<RegisterProps> = ({}) => {
 
           if (response.data?.register.errors) {
             setErrors(toErrorMap(response.data.register.errors));
+          } else if (response.data?.register.user) {
+            // navigate to landing page
+            router.push("/");
           }
         }}
       >
