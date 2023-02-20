@@ -14,7 +14,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
   }
 
   return (
-    <Flex bg='blackAlpha.200' p={4}>
+    <Flex bg='tan' p={4}>
       <Box ml={"auto"}>
         {!data.me ? (
           <>
