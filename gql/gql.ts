@@ -13,7 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
+    "\n  mutation LoginMutation($options: UsernamePasswordInput!) {\n    login(options: $options) {\n      user {\n        username\n        createdAt\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n": types.LoginMutationDocument,
     "\n  mutation registerPatientMutation($options: UsernamePasswordInput!) {\n    register(options: $options) {\n      errors {\n        field\n        message\n      }\n      user {\n        createdAt\n        id\n        username\n      }\n    }\n  }\n": types.RegisterPatientMutationDocument,
+    "\n  query me {\n    me {\n      username\n      id\n    }\n  }\n": types.MeDocument,
 };
 
 /**
@@ -33,7 +35,15 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  mutation LoginMutation($options: UsernamePasswordInput!) {\n    login(options: $options) {\n      user {\n        username\n        createdAt\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation LoginMutation($options: UsernamePasswordInput!) {\n    login(options: $options) {\n      user {\n        username\n        createdAt\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  mutation registerPatientMutation($options: UsernamePasswordInput!) {\n    register(options: $options) {\n      errors {\n        field\n        message\n      }\n      user {\n        createdAt\n        id\n        username\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation registerPatientMutation($options: UsernamePasswordInput!) {\n    register(options: $options) {\n      errors {\n        field\n        message\n      }\n      user {\n        createdAt\n        id\n        username\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query me {\n    me {\n      username\n      id\n    }\n  }\n"): (typeof documents)["\n  query me {\n    me {\n      username\n      id\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
