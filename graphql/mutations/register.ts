@@ -1,7 +1,7 @@
-import { graphql } from "gql";
+import gql from "graphql-tag";
 
-export const registerPatient = graphql(/*GraphQL*/ `
-  mutation registerPatientMutation($options: UsernamePasswordInput!) {
+export const REGISTER_MUTATION = gql`
+  mutation Register($options: UsernamePasswordInput!) {
     register(options: $options) {
       errors {
         field
@@ -14,4 +14,4 @@ export const registerPatient = graphql(/*GraphQL*/ `
       }
     }
   }
-`);
+`;

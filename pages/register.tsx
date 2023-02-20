@@ -8,13 +8,13 @@ import { Wrapper } from "components/Wrapper";
 import { InputField } from "components/InputField";
 import { toErrorMap } from "utils/toErrorMap";
 
-import { registerPatient } from "graphql/mutations/register";
+import { REGISTER_MUTATION } from "graphql/mutations/register";
 
 interface RegisterProps {}
 
 const Register: React.FC<RegisterProps> = ({}) => {
   const router = useRouter();
-  const [, handleRegister] = useMutation(registerPatient);
+  const [, handleRegister] = useMutation(REGISTER_MUTATION);
 
   return (
     <Wrapper variant='small'>

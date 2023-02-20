@@ -8,13 +8,13 @@ import { Wrapper } from "components/Wrapper";
 import { InputField } from "components/InputField";
 import { toErrorMap } from "utils/toErrorMap";
 
-import { loginMutation } from "graphql/mutations/login";
+import { LOGIN_MUTATION } from "graphql/mutations/login";
 
 interface LoginProps {}
 
 const Login: React.FC<LoginProps> = ({}) => {
   const router = useRouter();
-  const [, handleLogin] = useMutation(loginMutation);
+  const [, handleLogin] = useMutation(LOGIN_MUTATION);
 
   return (
     <Wrapper variant='small'>

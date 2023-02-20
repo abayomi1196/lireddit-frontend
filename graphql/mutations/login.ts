@@ -1,7 +1,7 @@
-import { graphql } from "gql";
+import gql from "graphql-tag";
 
-export const loginMutation = graphql(/*GraphQL*/ `
-  mutation LoginMutation($options: UsernamePasswordInput!) {
+export const LOGIN_MUTATION = gql`
+  mutation Login($options: UsernamePasswordInput!) {
     login(options: $options) {
       user {
         username
@@ -14,4 +14,4 @@ export const loginMutation = graphql(/*GraphQL*/ `
       }
     }
   }
-`);
+`;

@@ -2,19 +2,19 @@ import { Box, Button, Flex, Link } from "@chakra-ui/react";
 import { useQuery } from "urql";
 import NextLink from "next/link";
 
-import { meQuery } from "graphql/queries/me";
+import { ME_QUERY } from "graphql/queries/me";
 
 interface NavBarProps {}
 
 export const NavBar: React.FC<NavBarProps> = ({}) => {
-  const [{ data, fetching }] = useQuery({ query: meQuery });
+  const [{ data, fetching }] = useQuery({ query: ME_QUERY });
 
   if (fetching) {
     return null;
   }
 
   return (
-    <Flex bg='tan' p={4}>
+    <Flex bg='blackAlpha.200' p={4}>
       <Box ml={"auto"}>
         {!data.me ? (
           <>
