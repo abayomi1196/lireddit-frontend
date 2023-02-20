@@ -1,6 +1,8 @@
-import gql from "graphql-tag";
+import { gql } from "urql";
 
-// fragment RegularUser on User {
-//   id
-//   username
-// }
+export const REGULAR_USER_FRAGMENT = gql`
+  fragment RegularUser on User {
+    id
+    username
+  }
+`;

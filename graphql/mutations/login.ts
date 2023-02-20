@@ -5,7 +5,6 @@ export const LOGIN_MUTATION = gql`
     login(options: $options) {
       user {
         username
-        createdAt
         id
       }
       errors {

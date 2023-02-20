@@ -8,9 +8,8 @@ export const REGISTER_MUTATION = gql`
         message
       }
       user {
-        createdAt
-        id
         username
+        id
       }
     }
   }
