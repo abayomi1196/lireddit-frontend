@@ -4,19 +4,16 @@ import NextLink from "next/link";
 
 import { ME_QUERY } from "graphql/queries/me";
 import { LOGOUT_MUTATION } from "graphql/mutations/logout";
+import { isServer } from "utils/isServer";
 
 interface NavBarProps {}
 
 export const NavBar: React.FC<NavBarProps> = ({}) => {
-  const [{ data, fetching }] = useQuery({ query: ME_QUERY });
+  const [{ data }] = useQuery({ query: ME_QUERY, pause: isServer() });
   const [{ fetching: logoutFetching }, handleLogout] =
     useMutation(LOGOUT_MUTATION);
 
-  if (fetching) {
-    return null;
-  }
-
-  console.log(data.me);
+  console.log(data);
 
   return (
     <Flex bg='blackAlpha.200' p={4}>
