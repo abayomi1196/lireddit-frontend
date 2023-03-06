@@ -9,16 +9,17 @@ import { isServer } from "utils/isServer";
 interface NavBarProps {}
 
 export const NavBar: React.FC<NavBarProps> = ({}) => {
-  const [{ data }] = useQuery({ query: ME_QUERY, pause: isServer() });
+  const [{ data }] = useQuery({
+    query: ME_QUERY,
+    pause: isServer()
+  });
   const [{ fetching: logoutFetching }, handleLogout] =
     useMutation(LOGOUT_MUTATION);
-
-  console.log(data);
 
   return (
     <Flex bg='blackAlpha.200' p={4}>
       <Box ml={"auto"}>
-        {!data.me ? (
+        {!data?.me ? (
           <>
             <Link as={NextLink} href='/login' mr={2} color='black'>
               login

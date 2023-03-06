@@ -20,6 +20,7 @@ function betterUpdateQuery<Result, Query>(
 
 export const createUrqlClient = (ssrExchange: any) => ({
   url: "http://localhost:6380/graphql",
+
   fetchOptions: {
     credentials: "include" as const
   },
@@ -46,7 +47,6 @@ export const createUrqlClient = (ssrExchange: any) => ({
               { query: MeDocument },
               _result,
               (result, query) => {
-                console.log(result, cache);
                 if (result.login.errors) {
                   return query;
                 } else {
