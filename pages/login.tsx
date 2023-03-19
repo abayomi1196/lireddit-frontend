@@ -4,6 +4,7 @@ import { Box, Button } from "@chakra-ui/react";
 import { useMutation } from "urql";
 import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
+import Link from "next/link";
 
 import { Wrapper } from "components/Wrapper";
 import { InputField } from "components/InputField";
@@ -49,6 +50,18 @@ const Login: React.FC<LoginProps> = ({}) => {
                 type='password'
               />
             </Box>
+
+            <Link
+              href={"/forgot-password"}
+              style={{
+                marginBottom: "12px",
+                display: "block",
+                textDecoration: "underline",
+                textAlign: "right"
+              }}
+            >
+              Forgot password?
+            </Link>
 
             <Button
               type='submit'

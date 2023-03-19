@@ -3,9 +3,9 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Button,
-  LinkOverlay
+  Button
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
 import { useMutation } from "urql";
@@ -18,7 +18,6 @@ import { Wrapper } from "components/Wrapper";
 import { CHANGE_PASSWORD_MUTATION } from "graphql/mutations/change-password";
 import { toErrorMap } from "utils/toErrorMap";
 import { createUrqlClient } from "utils/createUrqlClient";
-import Link from "next/link";
 
 const ChangePassword: NextPage<{ token: string }> = ({ token }) => {
   const router = useRouter();
@@ -40,8 +39,6 @@ const ChangePassword: NextPage<{ token: string }> = ({ token }) => {
           if (response.data.changePassword.errors) {
             console.log("error dey");
             const errorMap = toErrorMap(response.data.changePassword.errors);
-
-            console.log({ errorMap });
 
             if ("token" in errorMap) {
               setTokenError(errorMap.token);
