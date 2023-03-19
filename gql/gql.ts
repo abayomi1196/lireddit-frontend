@@ -14,6 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  fragment RegularUser on User {\n    id\n    username\n  }\n": types.RegularUserFragmentDoc,
+    "\n  mutation ChangePassword($token: String!, $newPassword: String!) {\n    changePassword(token: $token, newPassword: $newPassword) {\n      user {\n        username\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n": types.ChangePasswordDocument,
     "\n  mutation Login($usernameOrEmail: String!, $password: String!) {\n    login(usernameOrEmail: $usernameOrEmail, password: $password) {\n      user {\n        username\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n": types.LoginDocument,
     "\n  mutation logout {\n    logout\n  }\n": types.LogoutDocument,
     "\n  mutation Register($options: UsernamePasswordInput!) {\n    register(options: $options) {\n      errors {\n        field\n        message\n      }\n      user {\n        username\n        id\n      }\n    }\n  }\n": types.RegisterDocument,
@@ -39,6 +40,10 @@ export function graphql(source: string): unknown;
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  fragment RegularUser on User {\n    id\n    username\n  }\n"): (typeof documents)["\n  fragment RegularUser on User {\n    id\n    username\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation ChangePassword($token: String!, $newPassword: String!) {\n    changePassword(token: $token, newPassword: $newPassword) {\n      user {\n        username\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n"): (typeof documents)["\n  mutation ChangePassword($token: String!, $newPassword: String!) {\n    changePassword(token: $token, newPassword: $newPassword) {\n      user {\n        username\n        id\n      }\n      errors {\n        field\n        message\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
