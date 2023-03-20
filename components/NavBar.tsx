@@ -17,14 +17,14 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     useMutation(LOGOUT_MUTATION);
 
   return (
-    <Flex bg='blackAlpha.200' p={4}>
+    <Flex bg='blackAlpha.700' p={4} position='sticky' top={0} zIndex={10}>
       <Box ml={"auto"}>
         {!data?.me ? (
           <>
-            <Link as={NextLink} href='/login' mr={2} color='black'>
+            <Link as={NextLink} href='/login' mr={2} color='white'>
               login
             </Link>
-            <Link as={NextLink} href='/register' color='black'>
+            <Link as={NextLink} href='/register' color='white'>
               register
             </Link>
           </>
