@@ -1,16 +1,17 @@
 import { useQuery } from "urql";
 import { withUrqlClient } from "next-urql";
+import Link from "next/link";
 
 import { createUrqlClient } from "utils/createUrqlClient";
 import { POSTS_QUERY } from "graphql/queries/posts";
-import { NavBar } from "components/NavBar";
+import Layout from "components/Layout";
 
 const Index = () => {
   const [{ data, fetching }] = useQuery({ query: POSTS_QUERY });
 
   return (
-    <>
-      <NavBar />
+    <Layout>
+      <Link href={"/create-post"}>create post</Link>
       <div>Hello world. Yanne!!</div>
       <br />
       {!data && fetching ? (
@@ -20,7 +21,7 @@ const Index = () => {
       ) : data ? (
         data.posts.map((p: any) => <div key={p.id}>{p.title}</div>)
       ) : null}
-    </>
+    </Layout>
   );
 };
 
