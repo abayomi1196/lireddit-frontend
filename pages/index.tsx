@@ -6,13 +6,17 @@ import { createUrqlClient } from "utils/createUrqlClient";
 import { POSTS_QUERY } from "graphql/queries/posts";
 import Layout from "components/Layout";
 import { Box, Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { useState } from "react";
 
 const Index = () => {
+  const [variables, setVariables] = useState({
+    limit: 10,
+    cursor: null as null | string
+  });
+
   const [{ data, fetching }] = useQuery({
     query: POSTS_QUERY,
-    variables: {
-      limit: 5
-    }
+    variables
   });
 
   if (!fetching && !data) {
@@ -51,7 +55,16 @@ const Index = () => {
           </Stack>
 
           <Flex justify={"center"}>
-            <Button my={8} isLoading={fetching}>
+            <Button
+              my={8}
+              isLoading={fetching}
+              onClick={() =>
+                setVariables({
+                  limit: variables.limit,
+                  cursor: data.posts[data.posts.length - 1].createdAt
+                })
+              }
+            >
               load more
             </Button>
           </Flex>
