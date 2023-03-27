@@ -9,6 +9,10 @@ export const POSTS_QUERY = gql`
         title
         textSnippet
         createdAt
+        creator {
+          id
+          username
+        }
       }
     }
   }
