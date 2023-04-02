@@ -1,12 +1,22 @@
 import { useQuery } from "urql";
 import { withUrqlClient } from "next-urql";
 import Link from "next/link";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  IconButton,
+  Stack,
+  Text
+} from "@chakra-ui/react";
+import { ChevronUpIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 
 import { createUrqlClient } from "utils/createUrqlClient";
 import { POSTS_QUERY } from "graphql/queries/posts";
 import Layout from "components/Layout";
-import { Box, Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { UpdootSection } from "components/UpdootSection";
 
 const Index = () => {
   const [variables, setVariables] = useState({
@@ -47,11 +57,21 @@ const Index = () => {
         <>
           <Stack mt={8} gap={2}>
             {data.posts.posts.map((p: any) => (
-              <Box key={p.id} shadow='md' borderWidth='1px' padding={3}>
-                <Heading fontSize='xl'>{p.title}</Heading>{" "}
-                <Text>Posted by: {p.creator.username}</Text>
-                <Text mt={4}>{p.textSnippet}</Text>
-              </Box>
+              <Flex
+                key={p.id}
+                shadow='md'
+                borderWidth='1px'
+                padding={3}
+                gap={4}
+              >
+                <UpdootSection points={p.points} id={p.id} />
+
+                <Box>
+                  <Heading fontSize='xl'>{p.title}</Heading>{" "}
+                  <Text>Posted by: {p.creator.username}</Text>
+                  <Text mt={4}>{p.textSnippet}</Text>
+                </Box>
+              </Flex>
             ))}
           </Stack>
 

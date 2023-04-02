@@ -8,6 +8,7 @@ export const POSTS_QUERY = gql`
         id
         title
         textSnippet
+        points
         createdAt
         creator {
           id
